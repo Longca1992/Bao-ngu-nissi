@@ -509,5 +509,55 @@
             }
         });
     </script>
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    
+    <style>
+        /* Thủ thuật thay đổi chữ n8n thành LongCa */
+        a[href*="n8n.io"] {
+            font-size: 0 !important; /* Ép chữ n8n tàng hình */
+            text-decoration: none !important; 
+            pointer-events: none; /* Ngăn khách bấm vào bị nhảy sang trang khác */
+        }
+        
+        a[href*="n8n.io"]::after {
+            content: "LongCa" !important; /* Chèn tên Sếp Long vào */
+            font-size: 13px !important; /* Cỡ chữ hiển thị */
+            color: #f59e0b !important; /* Màu vàng cam đồng bộ với web */
+            font-weight: 700 !important; /* In đậm cho ngầu */
+        }
+    </style>
+
+    <script type="module">
+// ... (Phần script ở dưới bạn giữ nguyên như cũ nhé) ...
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        createChat({
+            // NHỚ ĐỔI LINK WEBHOOK CỦA BẠN VÀO ĐÂY NHÉ
+            webhookUrl: 'https://n8n.haisankyha.vn/webhook/fce6203e-6e0f-45f5-aaca-76c65c4fc1a5/chat', 
+            metadata: { url: window.location.href },
+            
+            showWelcomeScreen: true,
+            defaultLanguage: 'vi',
+
+            i18n: {
+                vi: {
+                    title: 'Hải Sản Kỳ Hà',
+                    subtitle: 'Trợ lý tư vấn Sỉ & Lẻ 24/7',
+                    getStarted: 'Bắt Đầu Trò Chuyện',
+                    inputPlaceholder: 'Nhập câu hỏi của bạn...',
+                    closeButtonTooltip: 'Đóng cửa sổ',
+                }
+            },
+
+            initialMessages: [
+                'Chào mừng bạn đến với Tổng Kho Hải Sản Kỳ Hà! 👋',
+                'Bạn cần tư vấn về các size Bào Ngư Nissi hay muốn nhận bảng giá sỉ mới nhất hôm nay?'
+            ],
+            theme: {
+                color: '#f59e0b', // Màu vàng cam đồng bộ với website
+                fontFamily: 'Montserrat, sans-serif'
+            }
+        });
+    </script>
 </body>
 </html>
