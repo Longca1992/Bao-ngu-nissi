@@ -308,28 +308,60 @@
                         </div>
                     </div>
 
-                    <!-- FORM ĐĂNG KÝ NHẬN BÁO GIÁ ZALO -->
+                    <!-- FORM ĐĂNG KÝ NHẬN BÁO GIÁ Send sheet google -->
                     <div class="bg-gray-800/80 backdrop-blur-sm p-6 rounded-xl border border-gray-700 shadow-xl">
                         <h4 class="text-xl font-bold text-white mb-2"><i class="fa-solid fa-file-invoice-dollar text-accent mr-2"></i>Nhận Bảng Giá Sỉ Tự Động 24/24</h4>
-                        <p class="text-sm text-gray-400 mb-5">Vui lòng để lại thông tin, hệ thống hoặc nhân viên sẽ gửi báo giá qua Zalo ngay lập tức.</p>
-                        
-                        <form action="https://formspree.io/f/xbdqdnwl" method="POST" class="space-y-4">
+                        <p class="text-sm text-gray-400 mb-5">Vui lòng để lại thông tin để hệ thống chuyển hướng đến bảng giá ngay lập tức.</p>
+    
+                        <form id="formBaoGia" class="space-y-4">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
-                                    <input type="text" name="Tên Khách Hàng" placeholder="Tên / Tên nhà hàng..." class="w-full px-4 py-3 rounded-lg bg-[#0f172a] border border-gray-600 text-white focus:outline-none focus:border-accent transition" required>
+                                    <input type="text" name="ten_khach_hang" placeholder="Tên / Tên nhà hàng..." class="w-full px-4 py-3 rounded-lg bg-[#0f172a] border border-gray-600 text-white focus:outline-none focus:border-accent transition" required>
                                 </div>
                                 <div>
-                                    <input type="tel" name="Số Điện Thoại (Zalo)" placeholder="Số điện thoại Zalo..." class="w-full px-4 py-3 rounded-lg bg-[#0f172a] border border-gray-600 text-white focus:outline-none focus:border-accent transition" required>
+                                    <input type="tel" name="so_dien_thoai_zalo" placeholder="Số điện thoại Zalo..." class="w-full px-4 py-3 rounded-lg bg-[#0f172a] border border-gray-600 text-white focus:outline-none focus:border-accent transition" required>
                                 </div>
                             </div>
                             <div>
-                                <input type="text" name="Yêu cầu thêm" placeholder="Loại size hoặc số lượng dự kiến (Không bắt buộc)" class="w-full px-4 py-3 rounded-lg bg-[#0f172a] border border-gray-600 text-white focus:outline-none focus:border-accent transition">
+                                <input type="text" name="yeu_cau_them" placeholder="Loại size hoặc số lượng dự kiến (Không bắt buộc)" class="w-full px-4 py-3 rounded-lg bg-[#0f172a] border border-gray-600 text-white focus:outline-none focus:border-accent transition">
                             </div>
-                            <button type="submit" class="w-full bg-accent hover:bg-yellow-500 text-dark font-bold py-3.5 rounded-lg transition shadow-lg flex items-center justify-center gap-2 text-lg">
-                                <i class="fa-solid fa-paper-plane"></i> Gửi Yêu Cầu Gửi Báo Giá
+                            <button type="submit" id="btnSubmitForm" class="w-full bg-accent hover:bg-yellow-500 text-dark font-bold py-3.5 rounded-lg transition shadow-lg flex items-center justify-center gap-2 text-lg">
+                                <i class="fa-solid fa-paper-plane"></i> Xem Bảng Giá Sỉ Ngay
                             </button>
                         </form>
                     </div>
+
+                    <script>
+                        document.getElementById('formBaoGia').addEventListener('submit', function(e) {
+                            e.preventDefault(); // Ngăn chặn form tải lại trang
+
+                            // 1. Thay đổi trạng thái nút bấm để khách biết hệ thống đang xử lý
+                            const submitBtn = document.getElementById('btnSubmitForm');
+                            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang xử lý...';
+                            submitBtn.disabled = true;
+
+                           // 2. Lấy dữ liệu từ form
+                            const formData = new FormData(this);
+
+                            // --- ANH CẦN ĐIỀN 2 ĐƯỜNG LINK CỦA ANH VÀO ĐÂY ---
+                            const scriptURL = 'https://script.google.com/macros/s/AKfycbw9v8bE_P8enTe2J0KLncz58mIJNEwK_96-c8yZq9DyA4zHB4LCaGYmPdepoDRYznOjZA/exec';
+                            const redirectURL = 'https://haisankyha.vn/pages/bang-gia-1';
+
+                            // 3. Đẩy ngầm dữ liệu về Google Sheet
+                            fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+                                .then(response => {
+                                   // 4. Ngay khi đẩy thành công, chuyển hướng trang web sang bảng giá
+                                    window.location.href = redirectURL;
+                               })
+                               .catch(error => {
+                                    console.error('Lỗi lưu data:', error);
+                                    // Dù lỗi mạng thì vẫn cho khách xem bảng giá để không rớt sale
+                                    window.location.href = redirectURL;
+                                });
+                        });
+                    </script>
+			
+
 
                 </div>
             </div>
