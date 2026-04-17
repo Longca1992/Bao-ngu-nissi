@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bào Ngư Nissi Thượng Hạng - Cung Cấp Sỉ & Lẻ | Hải Sản Kỳ Hà</title>
+    <meta name="description" content="Khám phá Bào ngư Nissi thượng hạng tại Hải Sản Kỳ Hà. Đủ size 10-25 con/kg, chuẩn Net 7. Cung cấp sỉ lẻ số lượng lớn, giá tốt nhất TP.HCM.">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1e3a8a', // Deep Blue
+                        accent: '#f59e0b', // Amber/Gold
+                        dark: '#0f172a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        
+        /* Hiệu ứng nền Biển hiện đại 2026 */
+        .hero-wrapper {
+            position: relative;
+            overflow: hidden;
+            background-color: #0c2b4b; /* Màu xanh nước biển sâu dự phòng */
+        }
+        .hero-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -10%; left: -10%; right: -10%; bottom: -10%;
+            /* Ảnh nền mặt nước biển xanh trong, rất sáng và rõ ràng */
+            background-image: url('https://images.unsplash.com/photo-1500964757637-c85e8a162699?auto=format&fit=crop&w=1920&q=80'); 
+            background-size: cover;
+            background-position: center;
+            z-index: 1; /* Cấu hình lại phân lớp */
+            /* Cử động trôi mạnh hơn một chút để dễ nhận thấy */
+            animation: oceanDrift 20s ease-in-out infinite alternate;
+        }
+        .hero-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            /* Lớp phủ: Đậm bên trái để đọc chữ, trong suốt bên phải để lộ 100% cảnh biển */
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 55%, rgba(15, 23, 42, 0) 100%);
+            z-index: 2; /* Lớp phủ nằm trên ảnh biển */
+        }
+        @keyframes oceanDrift {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.12) translate(-3%, 2%); }
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .faq-answer.open {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <!-- VỊ TRÍ THAY LOGO TRÊN MENU -->
+                    <img src="https://cdn.hstatic.net/files/200000273197/file/logo_ky_ha.jpg" alt="Logo Hải Sản Kỳ Hà" class="h-14 w-auto rounded">
+                    <div class="hidden sm:block ml-1">
+                        <h1 class="font-bold text-lg md:text-xl text-primary leading-none uppercase">Hải Sản Kỳ Hà</h1>
+                        <span class="text-[10px] md:text-xs text-gray-500 font-bold tracking-wider uppercase">Kho Sỉ Số Lượng Lớn</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#san-pham" class="text-gray-700 hover:text-primary font-semibold transition">Sản Phẩm</a>
+                    <a href="#chat-luong" class="text-gray-700 hover:text-primary font-semibold transition">Chất Lượng</a>
+                    <a href="#khach-si" class="text-gray-700 hover:text-primary font-semibold transition">Khách Sỉ</a>
+                    <a href="#faq" class="text-gray-700 hover:text-primary font-semibold transition">FAQ</a>
+                </div>
+                <div class="flex items-center">
+                    <a href="tel:0987777131" class="hidden md:flex bg-accent hover:bg-yellow-500 text-white px-6 py-2 rounded-full font-bold transition items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-phone-volume"></i> 098.7777.131
+                    </a>
+                    <!-- Mobile menu button -->
+                    <button class="md:hidden text-gray-700 hover:text-primary focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-wrapper min-h-screen flex items-center pt-20 pb-12">
+        <!-- Đã thêm class relative z-10 để nội dung luôn nổi lên trên cùng -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center relative z-10">
+            <div class="md:w-[55%] text-center md:text-left py-12 md:py-16">
+                <span class="inline-block py-1 px-3 rounded-full bg-blue-900 bg-opacity-50 border border-blue-400 text-blue-300 text-sm font-semibold tracking-wider mb-4 shadow-[0_0_15px_rgba(59,130,246,0.3)] backdrop-blur-sm">
+                    GIÁ SỈ TỐT NHẤT TP.HCM
+                </span>
+                
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+                    BÀO NGƯ NISSI <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-yellow-300 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]">THƯỢNG HẠNG</span>
+                </h2>
+                <p class="text-lg md:text-xl text-gray-200 mb-6 max-w-2xl font-medium">
+                    Giải pháp nguyên liệu đẳng cấp cho nhà hàng và bữa tiệc gia đình. Chuẩn đóng gói <strong class="text-white">Net 7</strong>.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-8">
+                    <a href="#san-pham" class="bg-accent hover:bg-yellow-500 text-dark px-8 py-4 rounded-full font-bold text-lg transition shadow-[0_0_15px_rgba(245,158,11,0.5)] text-center">
+                        Xem Bảng Giá Ngay
+                    </a>
+                    <a href="https://zalo.me/0987777131" target="_blank" class="bg-transparent border-2 border-white hover:bg-white hover:text-dark text-white px-8 py-4 rounded-full font-bold text-lg transition text-center flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-comment-dots"></i> Chat Zalo Nhận Tư Vấn
+                    </a>
+                </div>
+                
+                <!-- Phần Chứng chỉ Quốc tế -->
+                <div class="mt-6 bg-white/10 backdrop-blur-sm border border-white/20 p-5 rounded-xl text-left shadow-lg">
+                    <h4 class="text-accent font-bold text-lg mb-1">Giá trị thực của Bào ngư Nissi nằm ở 5 CHỨNG CHỈ QUỐC TẾ</h4>
+                    <p class="text-sm text-gray-300 italic mb-4 border-b border-white/20 pb-2">Được in minh bạch ngay trên bao bì (điều mà hàng trôi nổi không có):</p>
+                    
+                    <ul class="text-white text-sm space-y-3 mb-4">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-certificate text-accent mt-1"></i>
+                            <span><strong class="text-accent">ASC & BRC:</strong> Tiêu chuẩn nuôi trồng và bán lẻ toàn cầu (Châu Âu).</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-award text-accent mt-1"></i>
+                            <span><strong class="text-accent">FDA Approved:</strong> Đạt chuẩn an toàn thực phẩm của Cục quản lý Dược phẩm & Thực phẩm Hoa Kỳ.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-shield-halved text-accent mt-1"></i>
+                            <span><strong class="text-accent">HACCP & ISO 22000:</strong> Hệ thống quản lý an toàn thực phẩm nghiêm ngặt.</span>
+                        </li>
+                    </ul>
+
+                    <div class="bg-primary/40 border border-blue-400/50 p-3 rounded-lg flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-2xl text-green-400"></i>
+                        <p class="text-sm text-white font-medium">Mua tại Kỳ Hà, quý khách mua sự minh bạch và hàng chuẩn xuất khẩu Âu/Mỹ, có đầy đủ giấy tờ VAT.</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="md:w-[45%] mt-10 md:mt-0 p-4 relative hidden md:block">
+                <div class="absolute inset-0 bg-accent rounded-full opacity-20 blur-3xl transform translate-x-10 translate-y-10"></div>
+                <!-- VỊ TRÍ THAY HÌNH ẢNH SẢN PHẨM Ở BANNER TẠI ĐÂY -->
+                <img src="https://cdn.hstatic.net/files/200000273197/file/bao-ngu-nissi-thuong-hang.webp" alt="Bào ngư Nissi thượng hạng" class="relative z-10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-4 border-white/10 transform hover:scale-105 transition duration-500 object-cover h-[500px] w-full">
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us / Quality -->
+    <section id="chat-luong" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl md:text-4xl font-bold text-primary mb-4">Chất Lượng Vượt Trội Từ Đại Dương</h3>
+                <div class="w-24 h-1 bg-accent mx-auto rounded"></div>
+                <p class="mt-6 text-gray-600 max-w-3xl mx-auto text-lg">Không phải ngẫu nhiên Bào Ngư Nissi được giới sành ăn và các bếp trưởng đánh giá cao. Sản phẩm ghi điểm tuyệt đối nhờ quy trình kiểm định khắt khe.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-gray-50 p-8 rounded-2xl text-center hover:shadow-xl transition border border-gray-100">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-scale-balanced text-4xl text-primary"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Chuẩn Đóng Gói Net 7</h4>
+                    <p class="text-gray-600">Minh bạch tuyệt đối! 70% thịt bào ngư, 30% lớp mạ băng (đá) giúp bảo vệ bề mặt thịt không bị "cháy lạnh", giữ nguyên độ giòn ngọt nguyên bản.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-2xl text-center hover:shadow-xl transition border border-gray-100 transform md:-translate-y-4">
+                    <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-snowflake text-4xl text-accent"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Công Nghệ "Frozen Live"</h4>
+                    <p class="text-gray-600">Cấp đông sâu ngay lập tức khi đang còn bơi sống. Rã đông tỷ lệ hao hụt cực thấp, thịt không bị teo ngót hay bở như hàng kém chất lượng.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-2xl text-center hover:shadow-xl transition border border-gray-100">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-heart-pulse text-4xl text-primary"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Lợi Ích Sức Khỏe "Vàng"</h4>
+                    <p class="text-gray-600">Giàu Protein, ít chất béo. Bồi bổ sinh lực, tăng cường trí não với Omega-3, và bổ sung khoáng chất vi lượng dồi dào cho cơ thể.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="san-pham" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl md:text-4xl font-bold text-primary mb-4">Phân Loại Bào Ngư Nissi</h3>
+                <div class="w-24 h-1 bg-accent mx-auto rounded"></div>
+                <p class="mt-6 text-gray-600 max-w-3xl mx-auto text-lg">Quy cách: Túi 1Kg hút chân không tiện lợi. Sẵn sàng đáp ứng mọi nhu cầu ẩm thực.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Product 1 (Size VIP) -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group border border-gray-100">
+                    <div class="relative h-56 overflow-hidden bg-gray-200">
+                        <img src="https://cdn.hstatic.net/files/200000273197/file/dia-chi-mua-bao-ngu-nissi.webp" alt="Bào ngư Nissi Size VIP" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute top-0 right-0 bg-red-500 text-white font-bold px-3 py-1 m-2 rounded z-20">SIZE VIP</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-dark mb-2">Size VIP (10-12 con/Kg)</h4>
+                        <p class="text-gray-600 text-sm mb-4 h-10">Thịt dày cộm, sang trọng. Thích hợp làm quà biếu hoặc món "Signature" nhà hàng.</p>
+                        <button onclick="document.getElementById('khach-si').scrollIntoView()" class="w-full bg-primary hover:bg-blue-800 text-white py-2.5 rounded-lg font-semibold transition">Nhận Báo Giá</button>
+                    </div>
+                </div>
+
+                <!-- Product 2 (Size Trung) -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group border border-gray-100">
+                    <div class="relative h-56 overflow-hidden bg-gray-200">
+                        <img src="https://cdn.hstatic.net/files/200000273197/file/dia-chi-cung-cap-bao-ngu-nissi.webp" alt="Bào ngư Nissi Size Trung" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-dark mb-2">Size Trung (15-17 con/Kg)</h4>
+                        <p class="text-gray-600 text-sm mb-4 h-10">Kích thước vừa vặn, lý tưởng cho món sốt dầu hào, nướng mỡ hành, hầm thuốc bắc.</p>
+                        <button onclick="document.getElementById('khach-si').scrollIntoView()" class="w-full bg-primary hover:bg-blue-800 text-white py-2.5 rounded-lg font-semibold transition">Nhận Báo Giá</button>
+                    </div>
+                </div>
+
+                <!-- Product 3 (Size Tiêu Chuẩn) -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden group border border-gray-100">
+                    <div class="relative h-56 overflow-hidden bg-gray-200">
+                        <img src="https://cdn.hstatic.net/files/200000273197/file/bang-gia-bao-ngu-nissi-moi-nhat.webp" alt="Bào ngư Nissi Size Tiêu Chuẩn" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute top-0 right-0 bg-accent text-dark font-bold px-3 py-1 m-2 rounded z-20">BÁN CHẠY</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-dark mb-2">Size Tiêu Chuẩn (20-25 con/Kg)</h4>
+                        <p class="text-gray-600 text-sm mb-4 h-10">Size phổ thông, giá cực kỳ tối ưu. Phù hợp nấu súp, cháo dinh dưỡng hoặc ăn lẩu.</p>
+                        <button onclick="document.getElementById('khach-si').scrollIntoView()" class="w-full bg-primary hover:bg-blue-800 text-white py-2.5 rounded-lg font-semibold transition">Nhận Báo Giá</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- B2B Wholesale Section (WITH YOUTUBE AND FORM) -->
+    <section id="khach-si" class="py-20 bg-[#131b2d] relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#f59e0b 1px, transparent 1px); background-size: 20px 20px;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-12">
+                
+                <div class="lg:w-1/2 flex flex-col justify-center">
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(245,158,11,0.15)] border border-gray-700 bg-gray-800 flex items-center justify-center">
+                        
+                        <!-- ======================================================= -->
+                        <!-- VỊ TRÍ CHÈN LINK YOUTUBE CỦA BẠN NẰM Ở ĐÂY                -->
+                        <!-- Hãy thay đoạn link trong thuộc tính src="..." bên dưới  -->
+                        <!-- ======================================================= -->
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            title="Video giới thiệu Hải Sản Kỳ Hà" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                        <!-- ======================================================= -->
+                        
+                    </div>
+                    <p class="text-center text-gray-400 text-sm mt-4 italic">Video giới thiệu quy mô Tổng Kho Hải Sản Kỳ Hà</p>
+                </div>
+
+                <div class="lg:w-1/2 text-white">
+                    <h3 class="text-sm font-bold tracking-widest text-accent uppercase mb-2">Dành Riêng Cho Đối Tác</h3>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8">Nhà Hàng - Quán Ăn: Chọn Kỳ Hà, Chọn Sự An Tâm!</h2>
+                    
+                    <div class="space-y-6 mb-8">
+                        <div class="flex gap-4">
+                            <div class="mt-1 bg-blue-900/40 p-3 rounded-full h-12 w-12 flex items-center justify-center border border-blue-800 shrink-0">
+                                <i class="fa-solid fa-boxes-stacked text-accent text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-100">Kho hàng khổng lồ, Không lo đứt gãy</h4>
+                                <p class="text-gray-400 mt-1">Hàng luôn có sẵn số lượng lớn tại Tổng kho TP.HCM. Bất kể bạn cần vài chục ký hay vài tạ, chúng tôi đều đáp ứng ngay.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <div class="mt-1 bg-blue-900/40 p-3 rounded-full h-12 w-12 flex items-center justify-center border border-blue-800 shrink-0">
+                                <i class="fa-solid fa-calendar-check text-accent text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-100">Phục vụ xuyên Lễ, Tết</h4>
+                                <p class="text-gray-400 mt-1">Kinh doanh liên tục không nghỉ kể cả Lễ, Tết. Đảm bảo cung cấp hàng hóa luôn ổn định, không đứt bữa cho gian bếp.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FORM ĐĂNG KÝ NHẬN BÁO GIÁ ZALO -->
+                    <div class="bg-gray-800/80 backdrop-blur-sm p-6 rounded-xl border border-gray-700 shadow-xl">
+                        <h4 class="text-xl font-bold text-white mb-2"><i class="fa-solid fa-file-invoice-dollar text-accent mr-2"></i>Nhận Bảng Giá Sỉ Tự Động 24/24</h4>
+                        <p class="text-sm text-gray-400 mb-5">Vui lòng để lại thông tin, hệ thống hoặc nhân viên sẽ gửi báo giá qua Zalo ngay lập tức.</p>
+                        
+                        <form action="https://formspree.io/f/xbdqdnwl" method="POST" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <input type="text" name="Tên Khách Hàng" placeholder="Tên / Tên nhà hàng..." class="w-full px-4 py-3 rounded-lg bg-[#0f172a] border border-gray-600 text-white focus:outline-none focus:border-accent transition" required>
+                                </div>
+                                <div>
+                                    <input type="tel" name="Số Điện Thoại (Zalo)" placeholder="Số điện thoại Zalo..." class="w-full px-4 py-3 rounded-lg bg-[#0f172a] border border-gray-600 text-white focus:outline-none focus:border-accent transition" required>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="text" name="Yêu cầu thêm" placeholder="Loại size hoặc số lượng dự kiến (Không bắt buộc)" class="w-full px-4 py-3 rounded-lg bg-[#0f172a] border border-gray-600 text-white focus:outline-none focus:border-accent transition">
+                            </div>
+                            <button type="submit" class="w-full bg-accent hover:bg-yellow-500 text-dark font-bold py-3.5 rounded-lg transition shadow-lg flex items-center justify-center gap-2 text-lg">
+                                <i class="fa-solid fa-paper-plane"></i> Gửi Yêu Cầu Gửi Báo Giá
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-primary mb-4">Câu Hỏi Thường Gặp</h3>
+                <div class="w-16 h-1 bg-accent mx-auto rounded"></div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 transition focus:outline-none">
+                        <span class="font-bold text-left text-primary text-lg">1. Bào Ngư Nissi Net 7 là gì? Ảnh hưởng thế nào đến chất lượng?</span>
+                        <i class="fa-solid fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer bg-white px-5 text-gray-600">
+                        <p class="py-4 border-t border-gray-100">
+                            Net 7 là thuật ngữ chỉ tỷ lệ trọng lượng: 70% là thịt bào ngư thực tế và 30% là lớp mạ băng (đá). Lớp mạ băng này cực kỳ quan trọng giúp cách ly thịt bào ngư với không khí lạnh trực tiếp, ngăn chặn tình trạng cháy lạnh, đảm bảo giữ được độ tươi ngọt 99% như lúc còn bơi sống.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 transition focus:outline-none">
+                        <span class="font-bold text-left text-primary text-lg">2. Rã đông Bào Ngư Nissi thế nào để thịt không bị dai?</span>
+                        <i class="fa-solid fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer bg-white px-5 text-gray-600">
+                        <p class="py-4 border-t border-gray-100">
+                            Cách tốt nhất là rã đông chậm: Chuyển túi bào ngư từ ngăn đông xuống ngăn mát tủ lạnh trước nửa ngày. Nếu cần gấp, hãy để nguyên túi hút chân không ngâm vào nước mát khoảng 15-20 phút. <strong>Tuyệt đối không</strong> rã đông bằng lò vi sóng hay ngâm trực tiếp thịt vào nước nóng.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 transition focus:outline-none">
+                        <span class="font-bold text-left text-primary text-lg">3. Khách tỉnh muốn lấy sỉ thì Hải Sản Kỳ Hà có giao không?</span>
+                        <i class="fa-solid fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer bg-white px-5 text-gray-600">
+                        <p class="py-4 border-t border-gray-100">
+                            Có! Hải Sản Kỳ Hà hỗ trợ đóng thùng xốp giữ lạnh chuyên dụng và gửi xe khách hoặc chành xe đi các tỉnh toàn quốc. Hàng hóa đến tay vẫn đảm bảo độ lạnh tiêu chuẩn. Vui lòng liên hệ Hotline 098.7777.131 để hệ thống báo giá tự động hỗ trợ bạn.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-gray-300 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="col-span-1 lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <!-- VỊ TRÍ THAY LOGO Ở FOOTER -->
+                        <img src="https://cdn.hstatic.net/files/200000273197/file/logo_ky_ha.jpg" alt="Logo Hải Sản Kỳ Hà" class="h-16 w-auto rounded bg-white p-1">
+                        <div>
+                            <h2 class="font-bold text-2xl text-white uppercase leading-none mb-1">Hải Sản Kỳ Hà</h2>
+                            <span class="text-accent text-sm font-bold tracking-wider uppercase">Kho Sỉ Số Lượng Lớn</span>
+                        </div>
+                    </div>
+                    <p class="mb-6 max-w-sm">Chuyên sỉ số lượng lớn và bán lẻ hải sản cao cấp, giá tốt nhất thị trường. Hàng luôn có sẵn tại Tổng kho TP.HCM.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-accent hover:text-dark transition"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-accent hover:text-dark transition"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-accent hover:text-dark transition"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-4">Liên Hệ</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-accent"></i>
+                            <span>206 Nguyễn Ngọc Nhựt, Phường Phú Thọ Hoà, Tân Phú, TP HCM.</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-accent"></i>
+                            <a href="tel:0987777131" class="hover:text-accent transition">098.7777.131</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-globe text-accent"></i>
+                            <a href="http://www.haisankyha.vn" target="_blank" class="hover:text-accent transition">www.haisankyha.vn</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <!-- VỊ TRÍ GẮN CÁC LINK SẢN PHẨM KHÁC -->
+                    <h4 class="text-white font-bold text-lg mb-4">Sản Phẩm Khác</h4>
+                    <ul class="space-y-2">
+                        <li><a href="https://haisankyha.vn/products/coi-diep-nhat-nissi-sashimi" target="_blank" class="hover:text-accent transition block py-1"><i class="fa-solid fa-angle-right text-xs mr-2"></i> Cồi Điệp Nhật Bản</a></li>
+                        <li><a href="https://haisankyha.vn/products/rong-bien-tron-me-nissi-hop-500gr" target="_blank" class="hover:text-accent transition block py-1"><i class="fa-solid fa-angle-right text-xs mr-2"></i> Rong Biển Trộn Mè</a></li>
+                        <li><a href="https://haisankyha.vn/products/so-diep-ap-chao-nissi" target="_blank" class="hover:text-accent transition block py-1"><i class="fa-solid fa-angle-right text-xs mr-2"></i> Sò Điệp Áp Chảo</a></li>
+                        <li><a href="https://haisankyha.vn/collections/san-pham-nhap-khau" target="_blank" class="hover:text-accent transition block py-1"><i class="fa-solid fa-angle-right text-xs mr-2"></i> Hải Sản Nhập Khẩu</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm">
+                <p>&copy; 2024 Kho Lạnh Hải Sản Kỳ Hà. Tất cả các quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts for Interactivity -->
+    <script>
+        // FAQ Accordion Script
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const answer = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                
+                // Toggle open class
+                answer.classList.toggle('open');
+                
+                // Rotate icon
+                if (answer.classList.contains('open')) {
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('nav button');
+        const navLinks = document.querySelector('nav .hidden.md\\:flex');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            if(navLinks.classList.contains('hidden')) {
+                navLinks.classList.remove('hidden', 'md:flex');
+                navLinks.classList.add('flex', 'flex-col', 'absolute', 'top-20', 'left-0', 'w-full', 'bg-white', 'p-4', 'shadow-md', 'space-y-4');
+            } else {
+                navLinks.classList.add('hidden', 'md:flex');
+                navLinks.classList.remove('flex', 'flex-col', 'absolute', 'top-20', 'left-0', 'w-full', 'bg-white', 'p-4', 'shadow-md', 'space-y-4');
+            }
+        });
+    </script>
+</body>
+</html>
